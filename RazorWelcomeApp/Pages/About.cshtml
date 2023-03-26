@@ -1,0 +1,52 @@
+﻿@page
+@model RazorWelcomeApp.Pages.AboutModel
+@using RazorWelcomeApp
+@{
+    ViewData["Title"] = Model.Title;
+
+    string title = "About page";
+    int n = 10;
+
+    Company company = new() { Title = "Yandex", City = "Moscow" };
+}
+
+@functions
+{
+    void Hello(string name)
+    {
+        <div>Hello @name</div>
+    }
+}
+
+<h2>@Model.Title</h2>
+<h3>@Model.Message</h3>
+<h3>@Model.GetTime()</h3>
+
+<p>@(20 + 30)</p>
+@{
+    Hello("Bob");
+}
+
+
+<p>
+@if(n < 10)
+{
+    @: n < 10
+}
+else
+{
+    @: n > 10
+}
+</p>
+<p>@Model.Company</p>
+
+<h2>@Model.Message</h2>
+<form method="post">
+    <input type="text" name="item[name]" />
+    <input type="text" name="item[city]" />
+    <input type="number" name="item[age]" />
+    <input type="tel" name="item[phone]" />
+    <input type="email" name="item[email]" />
+    <input type="submit" value="Send" />
+</form>
+
